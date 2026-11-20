@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-label="Free Call-Agent Pipeline — a free phone receptionist for small businesses">
+  <rect width="1200" height="360" fill="#111827"/>
+  <rect x="24" y="24" width="1152" height="312" rx="16" fill="#1f2937" stroke="#374151" stroke-width="2"/>
+  <circle cx="96" cy="96" r="40" fill="#f59e0b"/>
+  <text x="96" y="112" font-family="system-ui, sans-serif" font-size="44" text-anchor="middle" fill="#111827">&#9742;</text>
+  <text x="160" y="112" font-family="system-ui, sans-serif" font-size="56" font-weight="700" fill="#ffffff">Free Call-Agent Pipeline</text>
+  <text x="96" y="200" font-family="system-ui, sans-serif" font-size="30" fill="#f59e0b">A free phone receptionist for small businesses.</text>
+  <text x="96" y="248" font-family="system-ui, sans-serif" font-size="24" fill="#d1d5db">Answers calls, books appointments, takes messages —</text>
+  <text x="96" y="284" font-family="system-ui, sans-serif" font-size="24" fill="#d1d5db">no platform fees, no per-minute bill.</text>
+</svg>

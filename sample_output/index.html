@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Call-Agent Pipeline — live demo</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; margin: 0;
+         background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+  main { max-width: 860px; margin: 0 auto; padding: 32px 20px 64px; }
+  h1 { font-size: 2rem; margin: 0 0 8px; }
+  h2 { margin-top: 40px; border-bottom: 1px solid #334155; padding-bottom: 6px; }
+  .sub { color: #94a3b8; font-size: 1.05rem; }
+  .badge { display: inline-block; background: #14532d; color: #bbf7d0; border-radius: 999px;
+           padding: 2px 10px; font-size: 0.85rem; margin-right: 6px; }
+  pre, code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: #1e293b; border: 1px solid #334155; border-radius: 8px;
+        padding: 16px; overflow-x: auto; font-size: 0.9rem; white-space: pre-wrap; }
+  .call { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 16px 20px; }
+  .call p { margin: 8px 0; }
+  .agent { color: #7dd3fc; }
+  .caller { color: #fbbf24; }
+  .tool { color: #86efac; font-size: 0.9rem; }
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #334155; }
+  th { color: #94a3b8; }
+  .note { background: #422006; border: 1px solid #92400e; border-radius: 8px; padding: 12px 16px; }
+  a { color: #7dd3fc; }
+  footer { color: #64748b; font-size: 0.9rem; margin-top: 48px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>📞 Free Call-Agent Pipeline</h1>
+  <p class="sub">Build receptionist / call agents for clients — clinics, real estate,
+  salons, any appointment business — with zero platform fees. One YAML per
+  client, one pipeline for all of them.</p>
+  <p>
+    <span class="badge">LiveKit Agents (Apache-2.0)</span>
+    <span class="badge">100% free demo path</span>
+    <span class="badge">No API key needed</span>
+  </p>
+
+  <h2>▶ A real call — Bright Smile Dental Clinic (demo client)</h2>
+  <p>This transcript was produced by the text simulator in this repo — the same
+  dialogue engine and tools the voice worker uses, driven by typed input instead
+  of speech. Run it yourself: <code>bash scripts/run_simulations.sh</code></p>
+  <div class="call">
+    <p><span class="agent"><strong>Agent (Maya):</strong></span> Hello, thank you for calling Bright Smile Dental Clinic. This is Maya, how can I help you today?</p>
+    <p><span class="caller"><strong>Caller:</strong></span> Hi, I&rsquo;d like to book a cleaning appointment</p>
+    <p><span class="agent"><strong>Agent (Maya):</strong></span> Which date works for you? You can say a date like 2027-01-15, or just say tomorrow.</p>
+    <p><span class="caller"><strong>Caller:</strong></span> With Dr. Amina on 2027-01-15 at 10:00</p>
+    <p><span class="agent"><strong>Agent (Maya):</strong></span> Nearly there — could I have your name and phone number to confirm the booking?</p>
+    <p><span class="caller"><strong>Caller:</strong></span> My name is Ayesha Khan, my phone is 07123 456789</p>
+    <p><span class="agent"><strong>Agent (Maya):</strong></span> You&rsquo;re booked in, Ayesha Khan! Cleaning with Dr. Amina Khan on 2027-01-15 at 10:00–10:45. Your reference code is BRI-000001 — please keep it handy. We&rsquo;ll see you then!</p>
+    <p class="tool">[tool: book_appointment &rarr; ok=True]</p>
+  </div>
+
+  <h2>🧾 The booking it created</h2>
+  <pre>{
+  "code": "BRI-000001",
+  "business": "Bright Smile Dental Clinic",
+  "service": "Cleaning",
+  "resource": "Dr. Amina Khan",
+  "date": "2027-01-15",
+  "start": "10:00",
+  "end": "10:45",
+  "customer": "Ayesha Khan",
+  "status": "booked"
+}</pre>
+  <p>Double-booking is impossible: the store enforces it with an overlap check
+  <em>and</em> a partial UNIQUE index on booked rows. Cancelling frees the slot.
+  Full proof in <code>tests/test_store.py</code>.</p>
+
+  <h2>📋 All four scripted demo calls</h2>
+  <table>
+    <tr><th>Call</th><th>Client</th><th>What it proves</th><th>Result</th></tr>
+    <tr><td>1 — book</td><td>Dental clinic</td><td>Cleaning booked with Dr. Amina, code BRI-000001</td><td>✅ Booked</td></tr>
+    <tr><td>2 — info</td><td>Dental clinic</td><td>Hours, prices (£150 whitening), directions</td><td>✅ Answered</td></tr>
+    <tr><td>3 — cancel</td><td>Dental clinic</td><td>Check-up booked, then cancelled by reference</td><td>✅ Cancelled</td></tr>
+    <tr><td>4 — viewing</td><td>Real estate</td><td>Two-bed flat viewing with Emma Wilson, code CIT-000001</td><td>✅ Booked</td></tr>
+  </table>
+  <p>Full transcripts: <code>sample_output/transcript-*.json</code> in the repo.</p>
+
+  <h2>🏗 How it works</h2>
+  <pre>Caller (phone / browser)
+        │  WebRTC or SIP
+        ▼
+LiveKit room ──▶ Agent worker (agent/worker.py)
+                    ├─ STT:  faster-whisper (local, free)
+                    │         or Deepgram (BYO key)
+                    ├─ LLM:  Ollama (local, free)
+                    │         or Gemini free tier (BYO key)
+                    ├─ TTS:  Piper (local, free)
+                    │         or Gemini / Deepgram (BYO key)
+                    └─ Tools (agent/tools.py, from client YAML)
+                         check_availability · book_appointment
+                         cancel / reschedule · hours · services
+                         directions · take_message · FAQ
+                              │
+                              ▼
+                    Booking store (SQLite, agent/store.py)
+                    double-booking impossible by design
+
+Text simulator (agent/simulate.py) runs the SAME engine
+and tools with typed input — no accounts, no keys, no audio.</pre>
+
+  <h2>🚀 Try it — 2 minutes, no account</h2>
+  <pre>git clone https://github.com/mrabr381/free-call-agent-pipeline.git
+cd free-call-agent-pipeline
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+python -m agent.simulate --config configs/clinic.yaml \
+    --script sample_data/call1_book.txt --today 2027-01-10</pre>
+
+  <h2>📞 Go live on voice (LiveKit)</h2>
+  <pre>pip install -r requirements-voice.txt
+# 1. Create a free LiveKit Cloud project (Build plan: 1,000 agent
+#    minutes/month included) and export LIVEKIT_URL, LIVEKIT_API_KEY,
+#    LIVEKIT_API_SECRET.
+# 2. Download a Piper voice (free, one time):
+python -m piper.download_voices en_US-lessac-medium --download-dir voices/
+export PIPER_VOICE="$PWD/voices/en_US-lessac-medium.onnx"
+# 3. Start Ollama with a local model (or use --llm gemini with a free key):
+ollama pull llama3.1
+# 4. Check everything resolves, then start the worker:
+python -m agent.worker --config configs/clinic.yaml --dry-run
+python -m agent.worker --config configs/clinic.yaml</pre>
+
+  <div class="note">
+    <strong>Honest note about phone numbers:</strong> the framework, the demo and
+    browser calls are 100% free. A real phone number that customers can dial
+    from their mobiles is <em>not</em> free — the number and per-minute
+    telephony are the client's paid add-on (LiveKit sells US numbers from
+    about $1/month; Twilio/Telnyx are alternatives). The pipeline is built so
+    the number is a configuration detail, not a rebuild.
+  </div>
+
+  <h2>🆕 Onboard a new client</h2>
+  <p>Copy <code>configs/clinic.yaml</code>, change the business name, persona,
+  hours, services, prices and staff — then run the simulator against it. No
+  code changes. See <code>configs/real-estate.yaml</code> for a second client
+  built exactly this way.</p>
+
+  <footer>
+    Free Call-Agent Pipeline — MIT licence.
+    <a href="https://github.com/mrabr381/free-call-agent-pipeline">github.com/mrabr381/free-call-agent-pipeline</a>
+    · This page makes zero external requests; everything on it is static.
+  </footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,116 @@
+{
+  "business": "Bright Smile Dental Clinic",
+  "config": "clinic.yaml",
+  "today": "2027-01-10",
+  "turns": [
+    {
+      "speaker": "agent",
+      "text": "Hello, thank you for calling Bright Smile Dental Clinic. This is Maya, how can I help you today?",
+      "tool_calls": []
+    },
+    {
+      "speaker": "caller",
+      "text": "What are your opening hours?",
+      "tool_calls": []
+    },
+    {
+      "speaker": "agent",
+      "text": "Our opening hours are:\n  Monday: 09:00–18:00\n  Tuesday: 09:00–18:00\n  Wednesday: 09:00–18:00\n  Thursday: 09:00–18:00\n  Friday: 09:00–18:00\n  Saturday: 09:00–14:00\n  Sunday: closed",
+      "tool_calls": [
+        {
+          "tool": "get_hours",
+          "args": [],
+          "result": {
+            "ok": true,
+            "hours": [
+              "Monday: 09:00–18:00",
+              "Tuesday: 09:00–18:00",
+              "Wednesday: 09:00–18:00",
+              "Thursday: 09:00–18:00",
+              "Friday: 09:00–18:00",
+              "Saturday: 09:00–14:00",
+              "Sunday: closed"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "speaker": "caller",
+      "text": "How much is a whitening?",
+      "tool_calls": []
+    },
+    {
+      "speaker": "agent",
+      "text": "Here is what we offer:\n  Check-up: GBP 25.00 (30 min) — Routine examination and oral health check.\n  Cleaning: GBP 45.00 (45 min) — Scale and polish with the hygienist.\n  Filling: GBP 80.00 (60 min) — White composite filling, one tooth.\n  Whitening: GBP 150.00 (60 min) — Professional teeth whitening session.\n  Emergency appointment: GBP 60.00 (30 min) — Same-day urgent care for pain or damage.",
+      "tool_calls": [
+        {
+          "tool": "get_services_and_prices",
+          "args": [],
+          "result": {
+            "ok": true,
+            "services": [
+              {
+                "name": "Check-up",
+                "price": 25.0,
+                "currency": "GBP",
+                "duration_min": 30,
+                "description": "Routine examination and oral health check."
+              },
+              {
+                "name": "Cleaning",
+                "price": 45.0,
+                "currency": "GBP",
+                "duration_min": 45,
+                "description": "Scale and polish with the hygienist."
+              },
+              {
+                "name": "Filling",
+                "price": 80.0,
+                "currency": "GBP",
+                "duration_min": 60,
+                "description": "White composite filling, one tooth."
+              },
+              {
+                "name": "Whitening",
+                "price": 150.0,
+                "currency": "GBP",
+                "duration_min": 60,
+                "description": "Professional teeth whitening session."
+              },
+              {
+                "name": "Emergency appointment",
+                "price": 60.0,
+                "currency": "GBP",
+                "duration_min": 30,
+                "description": "Same-day urgent care for pain or damage."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "speaker": "caller",
+      "text": "Where are you located?",
+      "tool_calls": []
+    },
+    {
+      "speaker": "agent",
+      "text": "We're at 12 High Street, London NW1 6JH. Two minutes' walk from Camden Town station, opposite the library. Our phone number is +44 20 7946 0018.",
+      "tool_calls": [
+        {
+          "tool": "get_directions",
+          "args": [],
+          "result": {
+            "ok": true,
+            "address": "12 High Street, London NW1 6JH",
+            "phone": "+44 20 7946 0018",
+            "directions": "Two minutes' walk from Camden Town station, opposite the library."
+          }
+        }
+      ]
+    }
+  ],
+  "bookings": []
+}

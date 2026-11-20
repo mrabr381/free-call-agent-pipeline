@@ -1,0 +1,99 @@
+{
+  "business": "Bright Smile Dental Clinic",
+  "config": "clinic.yaml",
+  "today": "2027-01-10",
+  "turns": [
+    {
+      "speaker": "agent",
+      "text": "Hello, thank you for calling Bright Smile Dental Clinic. This is Maya, how can I help you today?",
+      "tool_calls": []
+    },
+    {
+      "speaker": "caller",
+      "text": "I'd like to book a check-up on 2027-01-16 at 09:30",
+      "tool_calls": []
+    },
+    {
+      "speaker": "agent",
+      "text": "Nearly there — could I have your name and phone number to confirm the booking?",
+      "tool_calls": []
+    },
+    {
+      "speaker": "caller",
+      "text": "My name is Tom Baker, my phone is 07700 900456",
+      "tool_calls": []
+    },
+    {
+      "speaker": "agent",
+      "text": "You're booked in, Tom Baker! Check-up with Dr. Amina Khan on 2027-01-16 at 09:30–10:00. Your reference code is BRI-000001 — please keep it handy. We'll see you then!",
+      "tool_calls": [
+        {
+          "tool": "book_appointment",
+          "args": {
+            "service": "Check-up",
+            "date": "2027-01-16",
+            "time": "09:30",
+            "staff": "",
+            "customer_name": "Tom Baker",
+            "customer_phone": "07700900456",
+            "today": "2027-01-10"
+          },
+          "result": {
+            "ok": true,
+            "appointment": {
+              "id": 1,
+              "code": "BRI-000001",
+              "business": "Bright Smile Dental Clinic",
+              "resource": "Dr. Amina Khan",
+              "service": "Check-up",
+              "date": "2027-01-16",
+              "start": "09:30",
+              "end": "10:00",
+              "duration_min": 30,
+              "customer_name": "Tom Baker",
+              "customer_phone": "07700900456",
+              "status": "booked",
+              "created_at": "2026-11-20T02:26:16.733715+00:00"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "speaker": "caller",
+      "text": "Please cancel my appointment",
+      "tool_calls": []
+    },
+    {
+      "speaker": "agent",
+      "text": "Done — your Check-up on 2027-01-16 at 09:30 with Dr. Amina Khan is cancelled. The slot is free again, so just call back whenever you'd like to rebook.",
+      "tool_calls": [
+        {
+          "tool": "cancel_appointment",
+          "args": [
+            "BRI-000001"
+          ],
+          "result": {
+            "ok": true,
+            "appointment": {
+              "id": 1,
+              "code": "BRI-000001",
+              "business": "Bright Smile Dental Clinic",
+              "resource": "Dr. Amina Khan",
+              "service": "Check-up",
+              "date": "2027-01-16",
+              "start": "09:30",
+              "end": "10:00",
+              "duration_min": 30,
+              "customer_name": "Tom Baker",
+              "customer_phone": "07700900456",
+              "status": "cancelled",
+              "created_at": "2026-11-20T02:26:16.733715+00:00"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bookings": []
+}

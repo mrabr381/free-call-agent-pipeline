@@ -1,0 +1,4 @@
+# Scripted call 3 — book, then cancel (Bright Smile Dental Clinic)
+I'd like to book a check-up on 2027-01-16 at 09:30
+My name is Tom Baker, my phone is 07700 900456
+Please cancel my appointment

@@ -1,0 +1,4 @@
+# Scripted call 1 — book a cleaning (Bright Smile Dental Clinic)
+Hi, I'd like to book a cleaning appointment
+With Dr. Amina on 2027-01-15 at 10:00
+My name is Ayesha Khan, my phone is 07123 456789

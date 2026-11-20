@@ -1,0 +1,64 @@
+# Client config: City Homes Realty (fictional demo client)
+# Same pipeline, different business — viewings instead of appointments.
+
+business:
+  name: "City Homes Realty"
+  type: "estate agency"
+  phone: "+44 20 7946 0042"
+  address: "48 Market Road, London N7 9PW"
+  directions: "Next to Holloway Road station, above the bakery."
+  currency: "GBP"
+
+agent:
+  name: "Alex"
+  greeting: "Hello, thank you for calling City Homes Realty. This is Alex, how can I help you today?"
+  persona: >
+    Friendly, knowledgeable estate agent receptionist. Speak in short, clear
+    sentences. Always confirm the property, date and time before booking a
+    viewing. Never quote a price you have not been given — read it from the
+    listing.
+
+hours:
+  monday: {open: "09:00", close: "19:00"}
+  tuesday: {open: "09:00", close: "19:00"}
+  wednesday: {open: "09:00", close: "19:00"}
+  thursday: {open: "09:00", close: "19:00"}
+  friday: {open: "09:00", close: "19:00"}
+  saturday: {open: "09:00", close: "17:00"}
+  sunday: "closed"
+
+services:
+  - name: "One-bed flat viewing"
+    price: 0.00
+    duration_min: 30
+    description: "Viewing of a one-bedroom flat, e.g. 14 Rose Court — £1,450/month."
+  - name: "Two-bed flat viewing"
+    price: 0.00
+    duration_min: 45
+    description: "Viewing of a two-bedroom flat, e.g. 7 Willow House — £1,850/month."
+  - name: "House viewing"
+    price: 0.00
+    duration_min: 60
+    description: "Viewing of a house, e.g. 22 Oak Avenue — £2,600/month."
+  - name: "Valuation"
+    price: 0.00
+    duration_min: 30
+    description: "Free valuation of your property for sale or rent."
+
+staff:
+  - name: "Emma Wilson"
+    role: "Senior negotiator"
+  - name: "James Carter"
+    role: "Lettings negotiator"
+  - name: "Priya Shah"
+    role: "Sales negotiator"
+
+faqs:
+  - question: "What properties do you have available?"
+    answer: "We currently have a one-bed flat at 14 Rose Court for £1,450 a month, a two-bed flat at 7 Willow House for £1,850 a month, and a house at 22 Oak Avenue for £2,600 a month. Shall I book a viewing?"
+  - question: "Do you charge for viewings?"
+    answer: "No — all viewings are free. We just need your name and phone number to confirm."
+  - question: "Do you take a deposit?"
+    answer: "A holding deposit is one week's rent once you decide to proceed. We will explain the full process at the viewing."
+  - question: "Can I get a valuation of my home?"
+    answer: "Yes, valuations are free and take about 30 minutes. Shall I book one for you?"

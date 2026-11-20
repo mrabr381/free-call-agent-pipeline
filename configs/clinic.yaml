@@ -1,0 +1,67 @@
+# Client config: Bright Smile Dental Clinic (fictional demo client)
+# A new client means a new YAML like this one — no code changes.
+
+business:
+  name: "Bright Smile Dental Clinic"
+  type: "dental clinic"
+  phone: "+44 20 7946 0018"
+  address: "12 High Street, London NW1 6JH"
+  directions: "Two minutes' walk from Camden Town station, opposite the library."
+  currency: "GBP"
+
+agent:
+  name: "Maya"
+  greeting: "Hello, thank you for calling Bright Smile Dental Clinic. This is Maya, how can I help you today?"
+  persona: >
+    Warm, efficient dental receptionist. Speak in short, clear sentences.
+    Always confirm the date, time and doctor before booking. Never give
+    medical advice — offer an appointment instead.
+
+hours:
+  monday: {open: "09:00", close: "18:00"}
+  tuesday: {open: "09:00", close: "18:00"}
+  wednesday: {open: "09:00", close: "18:00"}
+  thursday: {open: "09:00", close: "18:00"}
+  friday: {open: "09:00", close: "18:00"}
+  saturday: {open: "09:00", close: "14:00"}
+  sunday: "closed"
+
+services:
+  - name: "Check-up"
+    price: 25.00
+    duration_min: 30
+    description: "Routine examination and oral health check."
+  - name: "Cleaning"
+    price: 45.00
+    duration_min: 45
+    description: "Scale and polish with the hygienist."
+  - name: "Filling"
+    price: 80.00
+    duration_min: 60
+    description: "White composite filling, one tooth."
+  - name: "Whitening"
+    price: 150.00
+    duration_min: 60
+    description: "Professional teeth whitening session."
+  - name: "Emergency appointment"
+    price: 60.00
+    duration_min: 30
+    description: "Same-day urgent care for pain or damage."
+
+staff:
+  - name: "Dr. Amina Khan"
+    role: "Principal dentist"
+  - name: "Dr. Bilal Ahmed"
+    role: "Associate dentist"
+  - name: "Dr. Sara Malik"
+    role: "Hygienist"
+
+faqs:
+  - question: "Do you take new patients?"
+    answer: "Yes, we are accepting new patients. A first check-up is £25 and takes 30 minutes — shall I book one for you?"
+  - question: "Do you offer NHS treatment?"
+    answer: "We are a private practice, so all treatment is charged at our private rates. A check-up is £25."
+  - question: "Is there parking nearby?"
+    answer: "There is pay-and-display parking on High Street, and the NCP car park is a five-minute walk away."
+  - question: "What should I do in a dental emergency?"
+    answer: "Call us as soon as we open and we will fit you in the same day. Our emergency appointment is £60 for 30 minutes."

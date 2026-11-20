@@ -1,0 +1,3 @@
+# Core dependencies — everything the simulator, tools and config loader need.
+# The voice worker needs requirements-voice.txt on top of this.
+PyYAML==6.0.3

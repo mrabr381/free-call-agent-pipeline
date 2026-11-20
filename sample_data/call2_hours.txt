@@ -1,0 +1,4 @@
+# Scripted call 2 — hours, prices, directions (Bright Smile Dental Clinic)
+What are your opening hours?
+How much is a whitening?
+Where are you located?

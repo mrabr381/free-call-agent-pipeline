@@ -1,0 +1,19 @@
+{
+  "booking": {
+    "id": 1,
+    "code": "BRI-000001",
+    "business": "Bright Smile Dental Clinic",
+    "resource": "Dr. Amina Khan",
+    "service": "Cleaning",
+    "date": "2027-01-15",
+    "start": "10:00",
+    "end": "10:45",
+    "duration_min": 45,
+    "customer_name": "Ayesha Khan",
+    "customer_phone": "07123456789",
+    "status": "booked",
+    "created_at": "2026-11-20T02:26:15.824720+00:00"
+  },
+  "source": "sample_data/call1_book.txt via python -m agent.simulate",
+  "verified": "double-booking the same slot is rejected; see tests/test_store.py"
+}

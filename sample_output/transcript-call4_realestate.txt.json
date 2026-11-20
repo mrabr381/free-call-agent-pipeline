@@ -1,0 +1,90 @@
+{
+  "business": "City Homes Realty",
+  "config": "real-estate.yaml",
+  "today": "2027-01-10",
+  "turns": [
+    {
+      "speaker": "agent",
+      "text": "Hello, thank you for calling City Homes Realty. This is Alex, how can I help you today?",
+      "tool_calls": []
+    },
+    {
+      "speaker": "caller",
+      "text": "I'd like to book a two-bed flat viewing",
+      "tool_calls": []
+    },
+    {
+      "speaker": "agent",
+      "text": "Which date works for you? You can say a date like 2027-01-15, or just say tomorrow.",
+      "tool_calls": []
+    },
+    {
+      "speaker": "caller",
+      "text": "On 2027-01-15 at 14:00 with Emma",
+      "tool_calls": []
+    },
+    {
+      "speaker": "agent",
+      "text": "Nearly there — could I have your name and phone number to confirm the booking?",
+      "tool_calls": []
+    },
+    {
+      "speaker": "caller",
+      "text": "My name is Omar Farooq, phone 07700 900123",
+      "tool_calls": []
+    },
+    {
+      "speaker": "agent",
+      "text": "You're booked in, Omar Farooq! Two-bed flat viewing with Emma Wilson on 2027-01-15 at 14:00–14:45. Your reference code is CIT-000001 — please keep it handy. We'll see you then!",
+      "tool_calls": [
+        {
+          "tool": "book_appointment",
+          "args": {
+            "service": "Two-bed flat viewing",
+            "date": "2027-01-15",
+            "time": "14:00",
+            "staff": "Emma Wilson",
+            "customer_name": "Omar Farooq",
+            "customer_phone": "07700900123",
+            "today": "2027-01-10"
+          },
+          "result": {
+            "ok": true,
+            "appointment": {
+              "id": 1,
+              "code": "CIT-000001",
+              "business": "City Homes Realty",
+              "resource": "Emma Wilson",
+              "service": "Two-bed flat viewing",
+              "date": "2027-01-15",
+              "start": "14:00",
+              "end": "14:45",
+              "duration_min": 45,
+              "customer_name": "Omar Farooq",
+              "customer_phone": "07700900123",
+              "status": "booked",
+              "created_at": "2026-11-20T02:26:17.209287+00:00"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bookings": [
+    {
+      "id": 1,
+      "code": "CIT-000001",
+      "business": "City Homes Realty",
+      "resource": "Emma Wilson",
+      "service": "Two-bed flat viewing",
+      "date": "2027-01-15",
+      "start": "14:00",
+      "end": "14:45",
+      "duration_min": 45,
+      "customer_name": "Omar Farooq",
+      "customer_phone": "07700900123",
+      "status": "booked",
+      "created_at": "2026-11-20T02:26:17.209287+00:00"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Bookings database (created at runtime — never commit real client data)
+*.db
+calls.db
+
+# Local models / voices (downloaded at runtime, large)
+voices/
+*.onnx
+*.onnx.json
+~/.cache/huggingface/
+
+# LiveKit credentials (never commit)
+.env
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
