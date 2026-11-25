@@ -7,15 +7,28 @@
 
 ![Free Call-Agent Pipeline — a free phone receptionist for small businesses](assets/hero.svg)
 
+[![GitHub stars](https://img.shields.io/github/stars/mrabr381/free-call-agent-pipeline?style=social)](https://github.com/mrabr381/free-call-agent-pipeline) [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/muhammadabubakar)
+
 **A free phone receptionist for small businesses — it answers calls, books appointments and takes messages, with no platform fees and no per-minute bill.**
 
 One YAML per client, one pipeline for all of them. A new client means a new config file, not new code.
 
 ## Live demo
 
-**[See a real scripted call — booking a dental cleaning, with the booking record it created](https://mrabr381.github.io/free-call-agent-pipeline/sample_output/)**
+**[▶ Try the interactive call simulator — play the caller, book a cleaning with Dr. Amina, and watch the demo calendar fill](https://mrabr381.github.io/free-call-agent-pipeline/demo/)**
 
-> ⚠️ **Not live yet:** GitHub Pages is not enabled for this repo, so the link returns 404 as of 2026-11-20. The owner can switch it on in ~2 minutes (repo → **Settings → Pages → Source: Deploy from a branch → Branch: `main`, folder `/ (root)`** → Save). Until then, the same page is in the repo at [`sample_output/index.html`](sample_output/index.html) — zero external requests, works as-is on Pages.
+Or see the scripted version: **[a real scripted call — booking a dental cleaning, with the booking record it created](https://mrabr381.github.io/free-call-agent-pipeline/sample_output/)**
+
+![Sample report — the scripted demo call with Maya books a cleaning with Dr. Amina Khan on 2027-01-15 at 10:00, booking code BRI-000001, with the booking record it created](assets/screenshot.png)
+*The scripted version — the full call transcript, the booking record it created (code **BRI-000001**), and all four scripted demo calls.*
+
+![Demo in use — chatting with Maya books a cleaning with Dr. Amina Khan on 2027-01-15 at 10:00, reference BRI-000001, and the demo calendar fills](demo/screenshot.png)
+*The live demo in use — the chat with Maya books a cleaning with Dr. Amina Khan on 2027-01-15 at 10:00, reference **BRI-000001**, and the booking appears on the demo calendar, in the booking record and in the bookings table.*
+
+![Demo in motion — the three-message booking chat with Maya, ending in booking BRI-000001](demo/demo.gif)
+*The demo in motion — the booking chat with Maya, from "I'd like to book a cleaning" to the confirmed booking BRI-000001.*
+
+> ✅ **Live on GitHub Pages:** both links above are live — the interactive call simulator and the scripted-call report.
 
 Or run the call yourself — no account, no key, no audio (see [Quickstart](#quickstart)):
 
